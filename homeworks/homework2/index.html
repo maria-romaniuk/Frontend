@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        .main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            padding: 10px 20px;
+        }
+        input{
+            margin-top: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        
+            border: 1px solid #cacaca;
+            border-radius: 10px;
+            padding: 20px;
+
+        }
+        label{
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            margin: 0 20px 0 0;
+        
+        }
+        .userInfo input, .userLogin input, select{
+            margin-left: 5px;
+        }
+        .userInfo, .userLogin, .subscribe{
+            display: flex;
+        
+        }
+        .btns{
+            display: flex;
+            justify-content: flex-end;
+        }
+        button[type ="submit"]{
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Fill yout form</h1>
+    <form>
+       <div class="userInfo">
+        <label> LastName:
+            <input type="text" name="lastName" placeholder="LastName" required>
+        </label>
+        <label> Name:
+            <input type="text" name="name" placeholder="Name" required>
+        </label>
+        <label>Secoondname:
+            <input type="text" name="secondName" placeholder="Secondname">
+        </label>
+
+        <label for="gender">
+            <span>Choose you genter</span>
+            <select name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="intersex">Intersex</option>
+            </select>
+        </label>
+       </div>
+        <div class="userLogin">
+            <label>
+                Login
+                <input type="text" name="login" placeholder="Login" required>
+            </label>
+            <label>
+                Password
+                <input type="text" name="password" placeholder="Password" required>
+            </label>
+            <label>
+                Date:
+                <input type="date" name="date">
+            </label>
+            <label> Select you city:
+                <select name="city">
+                    <option value="Kyiv">Kyiv</option>
+                    <option value="Berlin" selected>Berlin</option>
+                    <option value="Barcelona">Barcelona</option>
+                </select>
+            </label>
+        </div>
+        
+        <textarea name="info" id="" cols="30" rows="10" maxlength="100" placeholder="enter your text"></textarea>
+
+        <p>Would you like to subscribe on our news?</p>
+        <div class="subscribe">
+        <label >
+            yes
+            <input type="radio" name="yes_no" value="yes" checked>
+        </label>
+        <label>
+            no
+            <input type="radio" name="yes_no" value="no">
+        </label>
+</div>
+        <div class="btns">
+            <button type="submit">Send</button> 
+        <input type="reset" value="Reset form">
+        </div>
+    </form>
+    </div>
+</body>
+
+</html>

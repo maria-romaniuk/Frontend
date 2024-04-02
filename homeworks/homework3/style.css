@@ -1,0 +1,133 @@
+body{
+    padding: 0;
+    margin: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: url(image/back.svg) center no-repeat ;
+    background-size: cover;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    color: #271b2e !important;
+}
+h4{
+    margin: 0 0 10px 0;
+    font-weight: 500;
+}
+.main input:focus-visible{
+    border-color: #5b257a;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 980px;
+    margin: 0 auto;
+}
+.userForm{
+   padding: 20px;
+   border: 1px solid #cacaca;
+   background-color: #f7f7f7;
+   box-shadow: 2px 2px 12px #cacaca;
+   border-radius: 10px;
+   display: flex;
+   flex-wrap: wrap;
+}
+.userForm > div{
+    display: flex;
+}
+.userLogin, .userInfo{
+    width: 50%;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.userLogin label, .userInfo label{
+    padding: 5px 0;
+}
+.userLogin label span, .userInfo label span{
+    display: block;
+    margin-bottom: 0;
+    font-size: 12px;
+    padding: 5px;
+}
+.userLogin input, .userInfo input, .userLogin select{
+    width: 80%;
+    min-width: 200px;
+    padding: 7px 5px;
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    
+}
+.subscribe, .btns{
+    width: 100%;
+}
+.subscribe{
+    position: relative;
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+.subscribe::before, .subscribe::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px; 
+    background-color: hsla(0, 0%, 79%, 0.489);
+
+}
+.subscribe::before{
+    top: 0;
+}
+.subscribe::after{
+    bottom: 0;
+}
+.subscribe label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.subscribe label span{
+    font-size: 12px;
+}
+.btns{
+   display: flex;
+  justify-content: flex-end;
+}
+
+.btns >*{
+    padding: 10px 5px; 
+    min-width: 150px;
+    margin-left: 10px;
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    color: #f7f7f7;
+    background: #5b257a;
+    cursor: pointer;
+}
+.btns >*:hover{
+    background: #812fb1;
+    scale: 1.01;
+    transition: linear .3s ease;
+}
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: 2px solid #5b257a;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  input[type="checkbox"]::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    clip-path: polygon(12% 40%, 52% 75%, 92% 18%, 50% 51%);    transform: scale(0);
+    background-color: #5b257a;
+  }
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+      

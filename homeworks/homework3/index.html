@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Create an account</h1>
+    <form action="post" class="userForm">
+        <div class="userLogin">
+            <label>
+                <span>Login:</span>
+                <input type="text" name="login" placeholder="Enter your login" required>
+            </label>
+            <label>
+                <span>Password:</span>
+                <input type="text" name="password" placeholder="Create a password" required>
+            </label>
+        
+            <label> <span>Select you city:</span>
+                <select name="city">
+                    <option value="Kyiv">Kyiv</option>
+                    <option value="Berlin" selected>Berlin</option>
+                    <option value="Barcelona">Barcelona</option>
+                </select>
+            </label>
+        </div>
+       <div class="userInfo">
+        <label> <span>LastName:</span>
+            <input type="text" name="lastName" placeholder="LastName" required>
+        </label>
+        <label> <span>Name:</span>
+            <input type="text" name="name" placeholder="Name" required>
+        </label>
+        <label>
+            <span>Date of Birth:</span>
+            <input type="date" name="date">
+        </label>
+       </div>
+
+        <div class="subscribe">
+            <h4>Subscribe on our news:</h4>
+        <label >
+            <input type="checkbox" name="subscribe" >
+           <span> we can send you our news by e-mail.</span>
+        </label>
+        <h4>Term & Conditions</h4>
+        <label>
+            <input type="checkbox" name="terms&conditions">
+            <span>you are creating an account and therefore you agree to Company’s <a href="">Terms of Use and Privacy Policy</a>.</span>
+        </label>
+</div>
+        <div class="btns">
+            <input type="reset" value="Reset form">
+            <button type="submit">Send</button> 
+    
+        </div>
+    </form>
+    </div>
+</body>
+</html>
