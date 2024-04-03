@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(../homework3/image/back.svg);
+    background-size: cover;
+    
+    width: 100vw;
+    min-height: 100vh;
+    font-size: 14px;
+    color: #071835;
+}
+.main{
+    display: flex;
+    flex-wrap: wrap;
+}
+.user{
+    width: 400px;
+    height: 50px;
+    border: 2px solid;
+    border-radius: 7px;
+    padding: 20px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+.user_name{}
+.user_lastname{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 7px;
+}
+.user_age{
+    height: 20%;
+}
+
+.user_style1{
+    align-items: center;
+    background-color: #45aadc;
+    border-color: #67c0ec;
+}
+.user_style2{
+    align-items: flex-end;
+    background-color: #398d6a;
+    border-color: rgb(113, 188, 110);
+}
+.user_style3{
+    align-items: flex-start;
+    background-color: #d1d35d;
+    border-color: #e4e66a;
+}
+.user_style4{
+    align-items: flex-end;
+    background-color: #d1539b;
+    border-color: #e269ae;
+}
