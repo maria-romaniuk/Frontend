@@ -1,0 +1,311 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-family: Lato,sans-serif;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .06em;
+    line-height: 20px;
+    font: 14px/1.42857143 Lato,sans-serif;
+    color: #fff;
+    letter-spacing: .06em;
+    background: #080325;
+    background: rgba(8,3,37,.9);
+}
+
+
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+a:active, a:hover {
+    outline: 0;
+}
+p{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+a:focus, a:hover {
+    color: #D92B4C;
+}
+.container {
+    width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.block-dropdown-item{
+    display: none;
+}
+/*------ Header -------*/
+.navbar-logo{
+    will-change: height, width, line-height;
+    transition: 0.3s ease;
+    padding: 0;
+}
+.navbar-logo{
+    margin-right: 15px;
+}
+.navbar-logo>img{
+    display: block;
+    height: 50px;
+    width: auto;
+}
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+    background: rgba(8, 3, 37, 0.4);
+    transition: background 0.3s ease;
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    padding: 20px 0;
+    min-height: 50px;
+}
+.menu{
+    flex: 4;
+    display: flex;
+    align-items: center;
+}
+.menu-item{
+    margin-left: 2em;
+    text-transform: uppercase;
+
+}
+.navigation-right{
+    display: flex;
+    align-items: center;
+}
+.search-toogle, .current-lang, .user .dropdown-user{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user .fa, .search-toogle a{
+    font-size: 20px;
+}
+/*------ Main -------*/
+.main{
+    background: url(img/image.png);
+    background-size: cover;
+    position: relative;
+}
+.back-cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8,3,37,.4);
+}
+.main>.container{
+    z-index: 2;
+    padding: 150px 0;
+}
+.main-blocks{
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-blocks> h1{
+    font-size: 30px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    width: 100%;
+    z-index: 1;
+}
+.main-infoblock{
+    margin: 0 10px;
+    width: calc(100% / 4 - 20px);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.main-infoblock-inner{
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.main-infoblock-inner>img{
+    position: relative;
+    display: block;
+    min-height: 100%;
+    opacity: 0.8;
+    max-height: 400px;
+    transform: scale3d(1.05,1.05,1);
+    transition: opacity 0.35s, transform 0.35s;
+}
+.main-infoblock:hover .main-infoblock-inner> img{
+    opacity: 0.6;
+    transform: scale3d(1,1,1);
+}
+.infoblock-info{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    text-align: left;
+}
+.infoblock-info::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 100%;
+    background: rgba(255,255,255,0.5);
+    transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+    transition: transform 0.6s;
+}
+.main-infoblock:hover .infoblock-info::before {
+    transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+}
+.main-infoblock p {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    padding: 0 1em;
+    max-width: 160px;
+    border-right: 4px solid #fff;
+    text-align: right;
+    opacity: 0;
+    transition: opacity 0.35s;
+    text-shadow: 0 0 2px #000;
+}
+.main-infoblock:hover p {
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+/*-------- FOOTER ---------*/
+.footer{
+    padding-bottom: 32px;
+    padding-top: 32px;
+    background: rgba(8,3,37,.94);
+}
+.footer-nav{
+    padding-bottom: 32px;
+    display: flex;
+    position: relative;
+}
+.footer-nav-menu {
+    min-width: calc(100% - 220px);
+    display: flex;
+
+}
+.footer-nav-menu >div{
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+.footer-nav-menu h4{
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+.footer-nav-menu a{
+    font-size: 13px;
+    line-height: 22px;
+    color: rgba(243, 243, 243,.5);
+    transition: color .3s;
+}
+.footer-nav-menu a:hover{
+    color: #D92B4C;
+}
+.navbar-right{
+    width: 220px;
+}
+.footer-logo img{
+    height: 75px;
+    margin-top: -10px;
+}
+.footer-logo a{
+    display: block;
+}
+.underlogo-info{
+    display: flex;
+}
+.underlogo-info>div:first-child{
+    margin-right: 10px;
+}
+.underlogo-info>div>span{
+    letter-spacing: 0;
+    color: rgba(243, 243, 243,.5);
+    display: block;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+.underlogo-info>div>span:nth-of-type(1) {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 13px;
+    color: #fff;
+}
+.footer-nav::after{
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.footer-line{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 32px;
+}
+.footerline-list{
+    display: flex;
+    margin-bottom: 35px;
+}
+.footerline-info p{
+    font-size: 12px;
+    color: rgba(255,255,255,.7);
+}
+
+.footerline-list a{
+    margin-right: 4rem;
+    font-size: 14px;
+    transition: color .3s, text-decoration .3s;
+}
+.social{
+    display: flex;
+
+}
+.social>a{
+    margin-left: 10px;
+    transition: 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+    height: 32px;
+}
+.social-list img{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+}
+.social>a:hover{
+    opacity: 0.8;
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+}
