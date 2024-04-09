@@ -1,0 +1,15 @@
+.about-main{
+    margin-top: 150px;
+}
+.about-main>.container{
+    display: flex;
+
+}
+.aside{
+    min-width: 15vw;
+    border-radius: 4px;
+    background-color: rgba(104, 104, 105, .5);
+}
+.aside ul{
+    list-style: none;
+}

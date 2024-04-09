@@ -1,0 +1,6 @@
+.main-news{
+    display: flex;
+}
+.newsblock{
+    width: calc(100%/3);
+}
