@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="main">
+        <div id="container" class="container">
+            <div id="calculator" class="calculator">
+                <h1>quadratic calculator</h1>
+                <h3>Enter your integers</h3>
+                <form id="calculatorForm" class="inputForm">
+                    <div class="inputBlock">
+                        <label for="numberA"> a:
+                        <input type="number" name="numberA"></label>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="numberB">b:
+                        <input type="number" name="numberB"></label>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="numberC">c:
+                        <input type="number" name="numberC"></label>
+                    </div>
+                    <button id="calculateBtn">calculate</button>
+                </form>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
+</body>
+</html>
