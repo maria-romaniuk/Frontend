@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js" defer></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="calc-wrapper">
+            <div class="inputBlock">
+                <label for="firstNum">first number:
+                <input type="text" id="firstNum"></label>
+                <label for="secondNum"> second number:
+                <input type="text" id="secondNum"></label>
+            </div>
+
+            <div class="numbersBlock">
+
+                <button class="num">0</button>
+                <button class="num">1</button>
+                <button class="num">2</button>
+                <button class="num">3</button>
+                <button class="num">4</button>
+                <button class="num">5</button>
+                <button class="num">6</button>
+                <button class="num">7</button>
+                <button class="num">8</button>
+                <button class="num">9</button>
+            </div>
+            <div class="sighnsBlock">
+                <button class="sign">+</button>
+                <button class="sign">-</button>
+                <button class="sign">*</button>
+                <button class="sign">/</button>
+            
+            </div>
+            <div class="controlBlock">
+                <button id="res">=</button>
+                <button id="dot">.</button>
+                <button id="ac">AC</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
+</body>
+
+</html>
