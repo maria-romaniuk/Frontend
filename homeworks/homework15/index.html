@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js"defer></script>
+    <title>Tasks</title>
+    <style>
+        .container{
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        #products{
+            display: flex;
+            margin: 10px 0;
+            justify-content: space-between;
+        }
+        .product{
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border: 1px solid #cacaac;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="filterBlock">
+                <input id="filterInput" type="text" placeholder="enter maximal price">
+                <button id="filter">Show</button>
+            </div>
+            <div id="products"></div>
+            
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

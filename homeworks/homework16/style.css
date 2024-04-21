@@ -1,0 +1,52 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.inputBlock{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #170251;
+    margin-bottom: 30px;
+}
+.inputBlock label{
+    width: 100%;
+    
+}
+.inputBlock input, .inputBlock textarea, .inputBlock button{
+    width: 100%;
+    border-radius: 4px;
+    padding: 7px;
+    margin-bottom: 10px;
+    border: 1px solid #06276c;
+    background-color: #ededeb;
+}
+.inputBlock button{
+    width: 40%;
+    align-self: flex-end;
+}
+#toDoList{
+    background-color: #ededeb;
+    padding: 10px;
+    border-radius: 4px;
+}
+.todoItem{
+    display: flex;
+}
+.todoItem>div{
+    width: 60%;
+}
+.todoItem>input[type='checkbox']{
+    margin: 20px;
+    display: block;
+}
+.todoItem.done>div{
+    text-decoration: line-through;
+}

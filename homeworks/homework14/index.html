@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js" defer></script>
+    <title>Spaceship</title>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container{
+        max-width: 1200px;
+        margin: 0 auto;
+        border-radius: 5px;
+        background: #cacaca;
+    }
+    #speed:after{
+        content: "km/s";
+
+    }
+    ul{
+        list-style: none;
+    }
+    #hideBtn{
+        padding: 10px;
+        border-radius: 4px;
+        background: #d63650;
+        color: #000;
+        border: 2px solid #a8263c;
+        cursor: pointer;
+    }
+</style>
+
+
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <ul>
+                <li><span>Name:</span> <span id="name"></span></li>
+                <li><span>Corporate:</span> <span id="manufacture"></span></li>
+                <li><span>Crew list:</span> <span id="crew"></span></li>
+                <li><span>Max Speed:</span> <span id="speed"></span></li>
+            </ul>
+            <button id="hideBtn"></button>
+        </div>
+    </div>
+</body>
+</html>
