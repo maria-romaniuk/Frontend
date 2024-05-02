@@ -28,6 +28,7 @@
 .container{
     max-width: 1140px;
     width: 100%;
+    padding: 0 15px;
 }
 button{
     padding: 5px;
@@ -378,3 +379,47 @@ path {
     }
 }
 /* -------END loader-------- */
+
+
+
+@media screen and (max-width: 768px){
+    .weatherBody{
+        flex-direction: column;
+        margin: 30px 0;
+    }
+    #mainInfo, #additonalinfo{
+        width: 100%;
+        margin: 20px 0;
+    }
+    .cityTemp{
+        justify-content: center;
+    }
+    .cityTemp:after, .weatherDescr:after{
+            left: 50%;
+            transform: translateX(-50%);
+    }
+    .tempLevel, .city{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 480px){
+    #weatherInput, #weatherBtn{
+        width: 100%;
+    }
+    #weatherInput{
+        border-radius: 5px 5px 0 0;
+    }
+    #weatherBtn{
+        border-radius: 0 0 5px 5px ;
+        margin-left: 0;
+    }
+    .weatherHead h1{
+        font-size: 21px;
+    }
+    .weatherDescr{
+        font-size: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
