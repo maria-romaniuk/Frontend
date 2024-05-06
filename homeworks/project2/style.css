@@ -1,0 +1,16 @@
+#products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product{
+    width: 33%;
+}
+.container{
+    display: flex;
+}
+#categoryList{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
