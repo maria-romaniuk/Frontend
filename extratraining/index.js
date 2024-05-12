@@ -82,9 +82,9 @@ function min(list){
       return minNum;
   }
 
-  console.log(min(list));
+  // console.log(min(list));
 
-  const min = function(list){
+  const min2 = function(list){
     list.sort((a, b) => (a - b));
     return list[0];
 }
@@ -101,3 +101,45 @@ const countSheep = function (num){
     }
     return stringText; 
 }
+
+// the main idea is to count all the occurring characters in a string. 
+//If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+function countCharacters(str) {
+  let charCount = {};
+  for (let char of str) {
+      charCount[char] = (charCount[char] || 0) + 1;
+  }
+  
+  return charCount;
+}
+
+// console.log(countCharacters("bbbereb"));
+function count (string) {  
+  var count = {};
+  string.split('').forEach(function(s) {
+     count[s] ? count[s]++ : count[s] = 1;
+  });
+  return count;
+}
+
+
+
+//Write a function that will return the count of distinct case-insensitive alphabetic characters and 
+//numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets
+// (both uppercase and lowercase) and numeric digits.
+
+// Example
+// "abcde" -> 0 # no characters repeats more than once
+// "aabbcde" -> 2 # 'a' and 'b'
+
+
+function duplicateCount(text){
+  var count = text.toLowerCase().split('').reduce((accum, curr) => {
+    accum[curr] ? accum[curr] += 1 : accum[curr] = 1;
+    return accum;
+  }, {});
+  return Object.keys(count).filter(key => count[key] > 1).length;
+}
+
+console.log(duplicateCount("abcdeeee"));
