@@ -142,4 +142,22 @@ function duplicateCount(text){
   return Object.keys(count).filter(key => count[key] > 1).length;
 }
 
+// Object.keys(): Этот метод возвращает массив строк, содержащий имена всех собственных (не унаследованных) 
+//перечисляемых свойств объекта. Синтаксис Object.keys(obj), где obj - это объект, чьи свойства нужно перечислить. Например:
+
+// const obj = { a: 1, b: 2, c: 3 };
+// const keys = Object.keys(obj);
+// console.log(keys); // ["a", "b", "c"]
+
+
+
+// filter(): Этот метод создает новый массив с элементами, прошедшими проверку, заданную в функции обратного вызова. 
+//Синтаксис array.filter(callback), где array - это массив, который нужно отфильтровать, а callback - это функция, 
+//применяемая к каждому элементу массива для проверки условия. Например:
+
+// const numbers = [1, 2, 3, 4, 5];
+// const evenNumbers = numbers.filter(num => num % 2 === 0);
+// console.log(evenNumbers); // [2, 4]
+
+
 console.log(duplicateCount("abcdeeee"));
