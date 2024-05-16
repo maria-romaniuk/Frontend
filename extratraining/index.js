@@ -159,5 +159,38 @@ function duplicateCount(text){
 // const evenNumbers = numbers.filter(num => num % 2 === 0);
 // console.log(evenNumbers); // [2, 4]
 
+// console.log(duplicateCount("abcdeeee"));
 
-console.log(duplicateCount("abcdeeee"));
+
+function duplicateCount(text){
+
+  var count = 0,
+   buffer = '',
+   sortedStr = text.toLowerCase().split('').sort().join('');
+ 
+   for(var i = 0; i < sortedStr.length; i++) {
+     if (sortedStr[i] == sortedStr[i+1]  && sortedStr[i] != buffer) {
+       buffer = sortedStr[i];
+       count++;
+       i++;
+     }
+   }
+   return count;
+  }
+
+// console.log(duplicateCount('eepfpownspqsppa'));
+
+
+// Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+// url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+
+const url = "http://github.com/carbonfive/raygun";
+
+const str = url.split('/').map(item => {
+  if (item.includes('.com')) {
+    const newStr = item.split('.');
+    return newStr;
+  }
+});
+
+console.log(str);
