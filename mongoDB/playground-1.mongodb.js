@@ -23,4 +23,5 @@
 // db.students.find().sort({name: -1})
 // db.students.find().sort({hobby: 1})
 
-db.students.findOne({hobby: 'traveling'})
+// db.students.findOne({hobby: 'traveling'})
+db.students.find().limit(-2)
