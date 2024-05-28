@@ -1,12 +1,12 @@
-let array = [1,2,3,4,5];
-let sum= array.reduce((a,b) => a + b, 0);
+let array = [1, 2, 3, 4, 5];
+let sum = array.reduce((a, b) => a + b, 0);
 
 // console.log(sum);
 //если 0 вконце, то начинается с 0, если поставить 7, то плюсовать будет с 7 + 1+2+3+4+5
 
 
 function opposite(number) {
-    return -number;
+  return -number;
 }
 // console.log(opposite(1));   // Output: -1
 // console.log(opposite(14));  // Output: -14
@@ -20,7 +20,7 @@ function opposite(number) {
 //Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling.
 //You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
 function litres(time) {
-    return Math.floor(time * 0.5);
+  return Math.floor(time * 0.5);
 }
 
 // console.log(litres(3));    // Output: 1
@@ -35,11 +35,11 @@ function litres(time) {
 // The answer is always greater or equal to 0, no matter if it was in the past or it is in the future.
 
 function twiceAsOld(dadYearsOld, sonYearsOld) {
-    // Find the age difference between the father and the son
-    const ageDifference = Math.abs(dadYearsOld - (2 * sonYearsOld));
-    
-    // Return the age difference
-    return ageDifference;
+  // Find the age difference between the father and the son
+  const ageDifference = Math.abs(dadYearsOld - (2 * sonYearsOld));
+
+  // Return the age difference
+  return ageDifference;
 }
 //const ageDifference = Math.abs(dadYearsOld - 2 * sonYearsOld);: 
 //Статический Math.abs()метод возвращает абсолютное значение числа.
@@ -57,27 +57,27 @@ person = null;
 
 
 const persons = {
-    name: "Lydia",
-    age: 21
-  };
-  
-  for (const item in person) { //iterates keys of an object
-    // console.log(item);
-  } //name,age
+  name: "Lydia",
+  age: 21
+};
+
+for (const item in person) { //iterates keys of an object
+  // console.log(item);
+} //name,age
 
 
-  for (const item in persons) { //iterates keys of an object
-    // console.log(`${item}: ${persons[item]}`);
-  } //name: Lydia  age: 21
+for (const item in persons) { //iterates keys of an object
+  // console.log(`${item}: ${persons[item]}`);
+} //name: Lydia  age: 21
 
 
-  const a = {};
-  const b = { key: "b" };
-  const c = { key: "c" };
-  //Any object key should be a string ; if an object doesn’t have the method
-  //toString , JS will convert the object to [object Object] 
-  a[b] = 123;
-  a[c] = 456;
+const a = {};
+const b = { key: "b" };
+const c = { key: "c" };
+//Any object key should be a string ; if an object doesn’t have the method
+//toString , JS will convert the object to [object Object] 
+a[b] = 123;
+a[c] = 456;
 // console.log(a[b]);
 
 //Когда вы используете объект как ключ в объекте JavaScript, он автоматически преобразуется в строку. По умолчанию, если объект не имеет метода toString, он преобразуется в строку [object Object].
@@ -94,30 +94,37 @@ const persons = {
 
 
 function getInfo(member, year) {
-    member.name = "Lydia";
-    year = "1998";
-  }
-  
-  const person2 = { name: "Sarah" };
-  const birthYear = "1997";
-  
-  getInfo(person2, birthYear);
-  
-//   console.log(person2, birthYear);
+  member.name = "Lydia";
+  year = "1998";
+  return [member, year]
+}
+
+const person2 = { name: "Sarah" };
+const birthYear = "1997";
+
+getInfo(person2, birthYear);
+// console.log(getInfo(person2, birthYear));
+// console.log(person2, birthYear);
 
 
-  function greeting() {
-    throw "Hello world!";
+
+
+
+
+
+
+function greeting() {
+  throw "Hello world!";
+}
+
+function sayHi() {
+  try {
+    const data = greeting();
+    // console.log("It worked!", data);
+  } catch (e) {
+    // console.log("Oh no an error:", e);
   }
-  
-  function sayHi() {
-    try {
-      const data = greeting();
-      console.log("It worked!", data);
-    } catch (e) {
-      console.log("Oh no an error:", e);
-    }
-  }
+}
 
 // sayHi();
 // Объяснение кода:
@@ -144,10 +151,10 @@ function getInfo(member, year) {
 // Метод reduce() вернет undefined, поскольку не было возвращено никакого значения из функции обратного вызова.
 
 const reduceArray2 = [1, 2, 3, 4].reduce((acc, curr) => {
-    // console.log(acc, curr);
-    return acc + curr; // возвращаем результат сложения аккумулятора и текущего элемента
-  }, 0); // начальное значение аккумулятора равно 0
-  
+  // console.log(acc, curr);
+  return acc + curr; // возвращаем результат сложения аккумулятора и текущего элемента
+}, 0); // начальное значение аккумулятора равно 0
+
 //   console.log(reduceArray2); // выводим результат суммирования элементов массива
 
 // В функции обратного вызова acc представляет собой текущее значение аккумулятора, а curr представляет текущий элемент массива.
@@ -158,10 +165,10 @@ const reduceArray2 = [1, 2, 3, 4].reduce((acc, curr) => {
 // После выполнения этого кода переменная reduceArray будет содержать сумму всех элементов массива [1, 2, 3, 4]
 
 function addToList(item, list) {
-    return list.push(item);
-  }
-  
-  const result3 = addToList("apple", ["banana"]);
+  return list.push(item);
+}
+
+const result3 = addToList("apple", ["banana"]);
 //   console.log(result3);
 // Метод push() изменяет исходный массив и возвращает новую длину массива после добавления элемента.
 // Если вы хотите, чтобы функция addToList возвращала измененный массив, вам нужно вернуть list после вызова push().
@@ -182,12 +189,23 @@ const list = [1 + 2, 1 * 2, 1 / 2]
 
 
 function sayHi(name) {
-    return `Hi there, ${name}`
-  }
-  
+  return `Hi there, ${name}`
+}
+
 //   console.log(sayHi())
 
 
 // console.log("I want pizza"[0]);
 
 
+let num = 10;
+
+const increaseNumber = num => num++; // развернутый ответ - num => return num++; в таком случае сачала возвращаем, потом увеличиваем на 1
+// const increaseNumber = num => { num++; return num; } // так будет 11. сначала увеличиваем, потом возвращаем
+const increasePassedNumber = number => number++;
+
+const num1 = increaseNumber(num);
+const num2 = increasePassedNumber(num1);
+
+console.log(num1);
+console.log(num2);

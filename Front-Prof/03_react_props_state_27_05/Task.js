@@ -17,20 +17,32 @@ const Task = () => {
     //setIsEdit(true);  //так реакт слушает изменения локального состояния //корректный способ
 
 
+    const textId = React.useRef();    // 1. ничего не приимает, а возвращает искомую сущность. получение абстрактной ссылки, которую моно повесить на любой из едементов
+
+    const [updatedTask, setUpdatedTask] = React.useState('Task1');
+
+    const handleClickSave = () =>{
+        setUpdatedTask(textId.current.value);
+        setIsEdit(false);
+    }
+
     // if (isEdit = true) { //тоже самое
     if (isEdit) {
         return (
             <>
                 <input readOnly value="name" />
-                <textarea defaultValue = 'description'></textarea>
-                <button onClick = {() => setIsEdit(false)}>save</button>
+                {/* 2. соединяем асьрактную ссылку с конктретным елементом, на который ссылка будет вести */}
+                <textarea defaultValue = {updatedTask} ref={textId}></textarea>
+                <button onClick = {() => setIsEdit(false)}>save</button> 
+                {/* // выше тоже самое, что ниже, просто вынесли фунцию в отдельную функц */}
+                <button onClick = {handleClickSave}>save</button>
             </>
         )
     } else {
         return (
             <>
                 <h3>Name: </h3>
-                <p>Description: </p>
+                <p>Description: {updatedTask}</p>
                 <button onClick = {() => setIsEdit(true)}>edit</button>
                 <button>delete</button>
             </>

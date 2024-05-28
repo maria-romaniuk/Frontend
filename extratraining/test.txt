@@ -30,6 +30,9 @@ Therefore, the correct output is:
 !!"" => false
 !!1 => true
 
+!! возвращает буленское значение противоположного
+
+
 
 
 2	What does this return?
@@ -162,6 +165,14 @@ const num = parseInt("7*6");
 ⦁	D: NaN
 
 Функция parseInt прекращает парсинг строки, как только встречает недопустимый для числа символ. В данном случае, она встречает символ * сразу после 7, поэтому возвращает 7, так как это единственная часть строки, которая может быть преобразована в число до встречи с недопустимым символом.
+принимает только цифры и точку. идет посимвольно слева напрво
+
+ parseInt(+"10") - плюс переведет в число
+ Number('10')
+ Number('10b') - рузельтат NaN - not a number
+
+
+ eval('10+10') - воспиинимает всю строку как математическое выражение, то он его посчитает и вернет результат
 
 
 
@@ -181,6 +192,12 @@ console.log(person, birthYear);
 ⦁	B: { name: "Sarah" }, "1998"
 ⦁	C: { name: "Lydia" }, "1998"
 ⦁	D: { name: "Sarah" }, "1997"
+
+person ссылка на то место, где хранится объэект.
+ yeAR передали самц строку. никакого логического 
+ если поссылке что-то меняем, то эти изменения применяются
+
+
 
 
 11	What's the output?
@@ -218,11 +235,27 @@ console.log(y);
 ⦁	D: [1]
 JS may unpack values from arrays through destructuring. For example:
 [a, b] = [1, 2];
+
+чтоб вывести 2ку
+const [x,y] = numbers;
+console.log(y); //1,2
+
+const [ ,y] = numbers;
+const [_,y] = numbers; // одинаковые по смыслу. выведут двойку
+
+const [ , ,y] = numbers;
+const [_,_,y] = numbers; // выведет 3-ку из массива
+
+map((_,i)) =>
+
+
  
 
 13	What's the output?
 const user = { name: "Lydia", age: 21 };
 const admin = { admin: true, ...user };
+
+method spread
 
 console.log(admin);
 ⦁	A: { admin: true, user: { name: "Lydia", age: 21 } }
@@ -258,10 +291,18 @@ const num2 = increasePassedNumber(num1);
 
 console.log(num1);
 console.log(num2);
-⦁	A: 10, 10
+✔	A: 10, 10
 ⦁	B: 10, 11
 ⦁	C: 11, 11
-✔	D: 11, 12
+⦁	D: 11, 12
+
+num1 - сначла присваивается число num, а потом происходит прибавление. снчала возвращает чтсло 10, а потом уже увеличивает его на 1
+
+постфиксная запись num++
+префиксная запись ++num
+
+const increaseNumber = num => num++; // развернутый ответ - num => return num++; в таком случае сачала возвращаем, потом увеличиваем на 1
+// const increaseNumber = num => { num++; return num; } // так будет 11. сначала увеличиваем, потом возвращаем
 
 
 
