@@ -90,7 +90,7 @@ const TaskList = () => {
           Add Task
         </button>
       </div>
-      <div className="d-flex flex-column text-center">
+      <div className="d-flex flex-wrap justify-content-between text-center">
         {tasks.map((task, i) => (
           <Task
             // Свойство key является обязательным (служебный инструмент для библиотеки React)

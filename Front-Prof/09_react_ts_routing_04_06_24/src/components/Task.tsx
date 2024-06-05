@@ -1,19 +1,18 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState,  FC } from "react";
 
-interface TaskProps {
-  title: string;
-  del: () => void;
-}
+interface ITaskProps { title: string, del: () => void }
 
-const Task: React.FC<TaskProps> = ({ title, del }) => {
+const Task: FC<ITaskProps> = ({ title, del }) => { //FunctionComponent = FC позволяет работать с женериками
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [updatedTask, setUpdatedTask] = useState<string>(title);
+  const [updatedTask, setUpdatedTask] = useState<string | undefined>(title);
   const textId = useRef<HTMLTextAreaElement>(null);
 
   const handleClickSave = () => {
-    if (textId.current) {
-      setUpdatedTask(textId.current.value);
-    }
+    // проверка на пустую строку. !  игнорирует проверку на null/undefined и делает все ошибкой.
+    //? более корректн работает. делает проверку на null indefined и в случае, если проверка дала положительный результат возвразает undefined
+    // по ключу 
+    setUpdatedTask(textId.current?.value);
+
     setIsEdit(false);
   };
 
@@ -29,8 +28,8 @@ const Task: React.FC<TaskProps> = ({ title, del }) => {
   } else {
     return (
       <div
-        className="border border-primary-subtle w-50"
-        style={{ margin: "0 auto" }}
+        className="border border-primary-subtle"
+        style={{ margin: "5px auto", width: "33%" }}
       >
         <p className="mt-2">{updatedTask}</p>
         <div className="d-flex justify-content-center mb-5">
