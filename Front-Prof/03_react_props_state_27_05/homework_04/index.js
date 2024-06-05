@@ -6,7 +6,7 @@ const ChessChampions = ({photo, name, years}) => {
         <>
             <div className="championBlock">
             <img src={photo} alt={name} className = "championImg"/>
-            <h2>{name}</h2>
+            <h2 style = {{textAligh: 'center'}}>{name}</h2>
             <p>World Champion: {years}</p>
             </div>
         </>
