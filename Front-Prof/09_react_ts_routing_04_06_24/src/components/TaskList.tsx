@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Task from "./Task";
 
 interface ITaskJson {
@@ -8,7 +8,7 @@ interface ITaskJson {
   completed: boolean;
 }
 
-const TaskList = () => {
+const TaskList:FC = () => {
   const [tasks, setTasks] = useState<string[]>([]);
   const [newTask, setNewTask] = useState<string>("");
 

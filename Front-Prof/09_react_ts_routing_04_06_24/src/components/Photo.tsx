@@ -1,16 +1,13 @@
-import { Component } from 'react';
-import { IPhotoJson } from './PhotoList';
+import { FC } from 'react'
+import { IPhotoJson } from './PhotoList'
 
-export class Photo extends Component<{ photo: IPhotoJson }> {
-    render() {
-        const { title, thumbnailUrl } = this.props.photo;
-        return (
-            <div className='photoItem  w-50 d-flex flex-column' style={{marginBottom:'10px', border:'1px solid #eee'}}>
-                <img src={thumbnailUrl} alt={title} />
-                <span className='text-center'>{title}</span>
-            </div>
-        )
-    }
+const Photo: FC<{photo: IPhotoJson}> = ({ photo }) => {
+  return (
+    <div>
+        <img src={photo.thumbnailUrl} alt={photo.title} />
+        <h2>{photo.title}</h2>
+    </div>
+  )
 }
 
 export default Photo
