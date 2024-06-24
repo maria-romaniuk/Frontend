@@ -10,12 +10,14 @@ const Task = () =>{
 
     return isEdit ?(
         <div>
-            <textarea></textarea>
+            <input placeholder='name'></input>
+            <textarea placeholder ='description'></textarea>
             <button onClick= {() => setIsEdit(false)}>Save</button>
         </div>
     ) : (
         <div>
-            <p>Name</p>
+            <h2>Name: </h2>
+            <p>Description: </p>
             <button onClick ={() => setIsEdit(true)}>Edit</button>
             <button>Delete</button>
         </div>
