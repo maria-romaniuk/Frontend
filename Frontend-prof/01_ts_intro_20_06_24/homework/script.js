@@ -12,33 +12,15 @@
 // вызова метода introduce для каждого из объектов
 // вызова метода attack для объекта warrior
 // вызова метода castSpell для объекта wizard
-
-
-interface ICharacter{
-    name: string,
-    health: number,
-    level: number,
-    introduce?: () => void; //функция introduce не принимает аргументов и не возвращает значения. так типизируем функцию
-}
-
-interface IWarrior extends ICharacter{
-    weapon: string,
-    attack: () => void
-}
-interface IWizzard extends ICharacter{
-    spell: string,
-    castSpell: () => void
-}
-const character: ICharacter = {
+var character = {
     name: '',
     health: 100,
     level: 1,
-    introduce() {
-        console.log(`Hello, my name is ${this.name}, I am at level ${this.level}, and I have ${this.health} health.`);
+    introduce: function () {
+        console.log("Hello, my name is ".concat(this.name, ", I am at level ").concat(this.level, ", and I have ").concat(this.health, " health."));
     }
-// когда работаем со стрелочными функциями this не работает
-}
-
+    // когда работаем со стрелочными функциями this не работает
+};
 // const warrior:IWarrior = Object.create(character, {
 //     name: { value: 'Warrior' },
 //     weapon: { value: 'Sword' },
@@ -50,7 +32,6 @@ const character: ICharacter = {
 //         }
 //     }
 // });
-
 // const wizard: IWizzard = Object.create(character, {
 //     name: { value: 'Wizard' },
 //     spell: { value: 'Skadush' },
@@ -62,37 +43,30 @@ const character: ICharacter = {
 //         }
 //     }
 // });
-
 // HTM...Elemenet- типизация HTML елемента, вместо ... необходимо написать имя тега
 // const warrior = Object.create(character) as IWarrior; //{...character} // as Iwarrior создаем объект и возвращаем типизацию. тут мы уточняем как именно будет выглядеть объект. применяем только когда нетальтернатвы
-const warrior:IWarrior = Object.create(character);
+var warrior = Object.create(character);
 warrior.name = 'Warrior';
 warrior.weapon = 'Sword';
 warrior.health = 100;
 warrior.level = 5;
-warrior.attack = function() {
-    console.log(`I am ${this.name} and I am attacking with my ${this.weapon}!`);
-}
-
+warrior.attack = function () {
+    console.log("I am ".concat(this.name, " and I am attacking with my ").concat(this.weapon, "!"));
+};
 // const wizard = Object.create(character) as IWizzard;
-const wizard:IWizzard = Object.create(character);
+var wizard = Object.create(character);
 wizard.name = 'Wizard';
 wizard.spell = 'Skadush';
 wizard.health = 60;
 wizard.level = 7;
-wizard.castSpell = function() {
-    console.log(`I am ${this.name} and I am casting the ${this.spell} spell!`);
-}
-
-
+wizard.castSpell = () => {
+    console.log("I am ".concat(this.name, " and I am casting the ").concat(this.spell, " spell!"));
+};
 if (warrior.introduce) {
     warrior.introduce();
-  }
-  if (wizard.introduce) {
+}
+if (wizard.introduce) {
     wizard.introduce();
-  }
-
+}
 warrior.attack();
-
-
 wizard.castSpell();
