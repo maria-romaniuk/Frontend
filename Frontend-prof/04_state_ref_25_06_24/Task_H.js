@@ -11,49 +11,22 @@ const Task = () =>{
 
 
 
-    // return isEdit ?(
-    //     <div>
-    //         <input placeholder='name'></input>
-    //         <textarea placeholder ='description'></textarea>
-    //         <button onClick= {() => setIsEdit(false)}>Save</button>
-    //     </div>
-    // ) : (
-    //     <div>
-    //         <h2>Name: </h2>
-    //         <p>Description: </p>
-    //         <button onClick ={() => setIsEdit(true)}>Edit</button>
-    //         <button>Delete</button>
-    //     </div>
-    // )
-
-    //вынесли изменение oncklick false в отдельную фунецию. 
-
-    const handleClickSave = () => {
-
-        //при клике на кнопку save меняем значение isEdit, что приводит к перерисовке всего, что зависит от его значения
-        setIsEdit(false);
-
-    }
-
-    const handleClickEdit = () => {
-        setIsEdit(true);
-    }
     return isEdit ?(
         <div>
             <input placeholder='name'></input>
-            <textarea defaultValue = 'Text' placeholder ='description'></textarea>
-            <button onClick= {handleClickSave}>Save</button> 
-           
+            <textarea placeholder ='description'></textarea>
+            <button onClick= {() => setIsEdit(false)}>Save</button>
         </div>
     ) : (
         <div>
             <h2>Name: </h2>
             <p>Description: </p>
-            <button onClick ={handleClickEdit}>Edit</button>
+            <button onClick ={() => setIsEdit(true)}>Edit</button>
             <button>Delete</button>
         </div>
     )
 }
+
 
 //вызов setIsEit внутри стрелочной функции - В этом случае setIsEdit(true) вызывается сразу же, когда компонент рендерится, и результат вызова (undefined, так как setIsEdit не возвращает значение) передается как значение атрибута onClick. Поэтому при клике на кнопку ничего не произойдет, так как onClick не является функцией.
 
@@ -65,16 +38,6 @@ const Task = () =>{
 // onclick - ожидает принять функцмю, которая будет заупщена в случае 
 
 // В случае со стрелочной функцией () => setIsEdit(true) создается и передается как обработчик события onClick. Когда кнопка нажимается, стрелочная функция выполняется, и setIsEdit(true) вызывается именно в этот момент.
-
-
-
-// <p> Name:</p> 
-//<button>Edit</button>
-//<button>Delete</button>
-
-
-//textarea>
-//<button> safe</button>
 
 root.render(
     <>
