@@ -1,11 +1,11 @@
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const Task = ({ task:{title, description,isTaskFinished}, taskDelete, editTask, index }) => {
+const Task = ({ task: { title, description, isTaskFinished }, taskDelete, editTask, index }) => {
 
     const [isEdit, setIsEdit] = React.useState(false)
     const textRef = React.useRef();
     const titleRef = React.useRef();
-    
+
 
     const handleClickSave = () => {
 
@@ -15,19 +15,24 @@ const Task = ({ task:{title, description,isTaskFinished}, taskDelete, editTask, 
 
 
     return isEdit ? (
-        <div>
+        <div className='d-flex  mt-3'>
             <input ref={titleRef} defaultValue={title} />
             <textarea ref={textRef} defaultValue={description}></textarea>
-            <button onClick={handleClickSave}>Save</button>
+            <button onClick={handleClickSave} className='btn'><i class="fa-regular fa-floppy-disk"></i></button>
 
         </div>
     ) : (
         <div className={`task ${isTaskFinished ? 'finished' : ''}`}>
-            <h2 style={{ textDecration: isTaskFinished ? 'line-through' : 'none' }}>Name: {title}</h2>
-            <p>Description: {description}</p>
-            <button onClick={() => setIsEdit(true)}>Edit</button>
-            <button onClick={taskDelete}>Delete</button>
-            <input type="checkbox" checked={isTaskFinished} onChange={() => editTask(index, { title, description, isTaskFinished: !isTaskFinished })} />
+            <divc className='col-9'>
+                <h4 style={{ textDecoration: isTaskFinished ? 'line-through' : 'none' }}>{title}</h4>
+                <div>Description: <p>{description}</p></div>
+            </divc>
+            <div className='col-3'>
+                <input type="checkbox" className='col-2 mx-2' checked={isTaskFinished} onChange={() => editTask(index, { title, description, isTaskFinished: !isTaskFinished })} />
+                <button onClick={() => setIsEdit(true)} className='btn col-3 mx-2'><i class="fa-regular fa-pen-to-square"></i></button>
+                <button onClick={taskDelete} className='btn col-3 mx-2'><i class="fa-regular fa-trash-can"></i></button>
+                
+            </div>
         </div>
     )
 }
@@ -53,8 +58,8 @@ const TaskList = () => {
     const [newTask, setNewTask] = React.useState({ title: '', description: '', isTaskFinished: false });
 
     const addTask = () => {
-// description может оставаться пустым
-        if (newTask.title.trim() ) {
+        // description может оставаться пустым
+        if (newTask.title.trim(' ')) {
             const tasksListCopy = [...tasks];
             tasksListCopy.push(newTask);
             setTasks(tasksListCopy);
@@ -74,28 +79,37 @@ const TaskList = () => {
 
 
     }
+    const sortedTasks = tasks.sort((a, b) => {
+        if (a === newTask) return -1; // newTask всегда в начало
+        if (b === newTask) return 1; // newTask всегда в начале после только что добавленной
+        if (a.isTaskFinished === b.isTaskFinished) return 0; // Оставляем в текущем порядке, если одинаковые
+
+        // Невыполненные задачи отображаются вверзху. выподенные должны уходить вконец списка
+        return a.isTaskFinished ? 1 : -1;
+    });
 
     return (
         <>
             <h1>Task manager App</h1>
 
-            <div>
-                <input type='text' value={newTask.title} onChange={(e) => setNewTask({ title: e.target.value, isTaskFinished: false })} />
+            <div className='taskBlock d-flex flex-column col-6 mb-5'>
+                <div className = ' d-flex flex-column'><span>Title:</span> <input type='text' value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} /></div>
 
-                <textarea type='text' value={newTask.description} onChange={(e) => setNewTask(e.target.value)}></textarea>
-                <button onClick={addTask}>add</button>
+                {/* //ошибка была из-за тогоБ что я передавала строку тайтл и булеан сразу. нужно было взять все состояние newTask и при реструктуризации добавить состояние что ввели в данное поле и остаивть newTask объектом */}
+
+                <div className='d-flex flex-column mt-3'><span>Description:</span> <textarea type='text' value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}></textarea></div>
+                <button className='btn align-self-end mt-3 col-2' onClick={addTask}>add</button>
             </div>
-            <div>
-                {tasks.map((task, index) => (
+            <div className = 'col-6'>
+                {sortedTasks.map((task, index) => (
                     <Task key={Math.random()}
-                        title={title}
-                        description={description}
-                        isTaskFinished={task.isTaskFinished}
+                        task={task}
                         taskDelete={() => handleDelete(index)} editTask={editTask}
                         index={index} />
                 ))
                 }
             </div>
+
         </>
     )
 }
