@@ -1,6 +1,6 @@
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const Task = ({ task: { title, description, isTaskFinished }, taskDelete, editTask, index }) => {
+const Task = ({ task: { title, description, isTaskFinished, createdAt, isEdited }, taskDelete, editTask, index }) => {
 
     const [isEdit, setIsEdit] = React.useState(false)
     const textRef = React.useRef();
@@ -9,7 +9,7 @@ const Task = ({ task: { title, description, isTaskFinished }, taskDelete, editTa
 
     const handleClickSave = () => {
 
-        editTask(index, { title: titleRef.current.value, description: textRef.current.value, isTaskFinished });
+        editTask(index, { title: titleRef.current.value, description: textRef.current.value, isTaskFinished, createdAt: new Date().toLocaleString(), isEdited: true });
         setIsEdit(false);
     }
 
@@ -26,6 +26,7 @@ const Task = ({ task: { title, description, isTaskFinished }, taskDelete, editTa
             <divc className='col-9'>
                 <h4 style={{ textDecoration: isTaskFinished ? 'line-through' : 'none' }}>{title}</h4>
                 <div>Description: <p>{description}</p></div>
+                <div>{isEdited ? 'Last Edited:' : 'Created:'} <span>{createdAt}</span></div>
             </divc>
             <div className='col-3'>
                 <input type="checkbox" className='col-2 mx-2' checked={isTaskFinished} onChange={() => editTask(index, { title, description, isTaskFinished: !isTaskFinished })} />
@@ -42,20 +43,29 @@ const TaskList = () => {
         {
             title: 'Task1',
             description: 'task1 description',
-            isTaskFinished: false
+            isTaskFinished: false,
+            createdAt: new Date().toLocaleString(),
+            isEdited: false
+           
         },
         {
             title: 'Task2',
             description: 'task2 description',
-            isTaskFinished: false
+            isTaskFinished: false,
+            createdAt: new Date().toLocaleString(),
+            isEdited: false
+           
         },
         {
             title: 'Task3',
             description: 'task3 description',
-            isTaskFinished: false
+            isTaskFinished: false,
+            createdAt: new Date().toLocaleString(),
+            isEdited: false
+           
         }
     ]);
-    const [newTask, setNewTask] = React.useState({ title: '', description: '', isTaskFinished: false });
+    const [newTask, setNewTask] = React.useState({ title: '', description: '', isTaskFinished: false, createdAt: '' });
 
     const addTask = () => {
         // description может оставаться пустым
@@ -74,8 +84,9 @@ const TaskList = () => {
     };
 
     const editTask = (i, updatedTask) => {
-
-        setTasks(tasks.map((e, index) => (index === i ? updatedTask : e)))
+        // setTasks(tasks.map((e, index) => (index === i ? updatedTask : e)))
+        // добавляем новое состояние изменения времен и даты. нужно передавать обратно кроме новоизененного таска еще и новое время
+        setTasks(tasks.map((e, index) => (index === i ? { ...updatedTask, createdAt: new Date().toLocaleString() } : e)));
 
 
     }
