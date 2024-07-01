@@ -1,81 +1,100 @@
-import { useState } from 'react'
-import Task from './Task'
+import { useEffect, useState } from "react";
+// import axios from "axios";
+import Task from "./Task";
 
 const TaskList = () => {
-    const [tasks, setTasks] = useState([
-        {
-            title: 'Task1',
-            description: 'task1 description',
-            isTaskFinished: false
-        },
-        {
-            title: 'Task2',
-            description: 'task2 description',
-            isTaskFinished: false
-        },
-        {
-            title: 'Task3',
-            description: 'task3 description',
-            isTaskFinished: false
-        }
-    ]);
-    const [newTask, setNewTask] = useState({ title: '', description: '', isTaskFinished: false });
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState({
+    title: "",
+    isCompleted: false,
+  });
 
-    const addTask = () => {
-        // description может оставаться пустым
-        if (newTask.title.trim(' ')) {
-            const tasksListCopy = [...tasks];
-            tasksListCopy.push(newTask);
-            setTasks(tasksListCopy);
-
-        }
-    }
-
-
-    const handleDelete = (i) => {
-
-        setTasks(tasks.filter((_, index) => i !== index))
+  useEffect(() => {
+    //инструмент позволяет работать с жизненным циклом инструмента. вначале идут хуки потом кастомные инструменты. сначала хуки реакта а потом мы пишем уже свой код
+    // 
+    const fetchTodos = async () => {
+      try {
+        // const data = (await axios.get("https://jsonplaceholder.typicode.com/todos")).data;
+        const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+        const data = await response.json();
+        console.log(data);
+        // убираем из useState массив тот, что мы сами написали. ограничиваем жсон в 10 штук отображения. разбираем и возвращаем копию.ниже присваеваем таску эти задачи
+        const tasksJson = data.slice(0, 10).map(todo => ({
+            title: todo.title,
+            isCompleted: todo.completed,
+            updatedAt: new Date().toISOString(),
+          }));
+  
+          setTasks(tasksJson);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-    const editTask = (i, updatedTask) => {
+    fetchTodos()
+  }, []);
 
-        setTasks(tasks.map((e, index) => (index === i ? updatedTask : e)))
-
-
+  const addTask = () => {
+    if (newTask.title.trim()) {
+      const tasksCopy = [...tasks];
+      tasksCopy.push({ ...newTask, updatedAt: new Date().toISOString() });
+      setTasks(tasksCopy);
     }
-    const sortedTasks = tasks.sort((a, b) => {
-        if (a === newTask) return -1; // newTask всегда в начало
-        if (b === newTask) return 1; // newTask всегда в начале после только что добавленной
-        if (a.isTaskFinished === b.isTaskFinished) return 0; // Оставляем в текущем порядке, если одинаковые
+  };
 
-        // Невыполненные задачи отображаются вверзху. выподенные должны уходить вконец списка
-        return a.isTaskFinished ? 1 : -1;
-    });
+  const deleteTask = (i) => {
+    setTasks(tasks.filter((_, index) => i !== index));
+  };
 
-    return (
-        <>
-            <h1>Task manager App</h1>
+  const editTask = (i, updatedTask) => {
+    setTasks(tasks.map((e, index) => (index === i ? updatedTask : e)));
+  };
 
-            <div className='taskBlock d-flex flex-column col-6 mb-5'>
-                <div className = ' d-flex flex-column'><span>Title:</span> <input type='text' value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} /></div>
+// сортируем задачи
+const sortedTasks = tasks.sort((a, b) => {
+    // выполненные уходят вконец списка
+    if (a.isCompleted !== b.isCompleted) {
+      return a.isCompleted ? 1 : -1;
+    }
+    // дальше если не выполнено просто сортируем по времени обновления
+    return new Date(b.updatedAt) - new Date(a.updatedAt);
+  });
 
-                {/* //ошибка была из-за тогоБ что я передавала строку тайтл и булеан сразу. нужно было взять все состояние newTask и при реструктуризации добавить состояние что ввели в данное поле и остаивть newTask объектом */}
+  return (
+    <div className="container mt-4">
+      <h1 className="mb-4 text-center">Task Manager App</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          value={newTask.title}
+          onChange={(e) =>
+            setNewTask({ title: e.target.value, isCompleted: false })
+          }
+          className="form-control"
+          placeholder="New Task"
+        />
+        <button onClick={addTask} className="btn btn-primary">
+          Add Task
+        </button>
+      </div>
+      <div>
+        {sortedTasks.map((task, index) => (
+          <Task
+            key={index}
+            task={task}
+            deleteTask={() => deleteTask(index)}
+            editTask={editTask}
+            index={index}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-                <div className='d-flex flex-column mt-3'><span>Description:</span> <textarea type='text' value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}></textarea></div>
-                <button className='btn align-self-end mt-3 col-2' onClick={addTask}>add</button>
-            </div>
-            <div className = 'col-6'>
-                {sortedTasks.map((task, index) => (
-                    <Task key={Math.random()}
-                        task={task}
-                        taskDelete={() => handleDelete(index)} editTask={editTask}
-                        index={index} />
-                ))
-                }
-            </div>
+export default TaskList;
 
-        </>
-    )
-}
+//useEffect (() => {}, []) - ничего не возвращает.метод принимает 2 параметра - функцмя и массив. в массив передаем инфу о зависимостях при обновлении которых будет перезапускаться данная функция прописанная ранее. если осталяем пустым, то запустится функцмя только один раз пока будет монтироваться компонент (создаваться).
+// нам перехапустать не нужно. мы просто полуачем список хадач
 
-export default TaskList
+//npm i axios - библиотека. позволяет более удобным способом работать с fetch запросами. не реакта. можно работать даже с обычным js. замена метода fetch. не нужно асинхронно обращаться к серверу потом к методу json и только потом делать что-то. делаем все и сразу
