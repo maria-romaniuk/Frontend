@@ -45,57 +45,63 @@ class User extends Component<UserProps, IUserState> {
     render(): ReactNode {
        const { isEdit, editedUser } = this.state;
         
-    return (
-        <div className="card mb-3">
-          <div className="card-body">
-            {isEdit ? (
-              <div>
-                <input
-                  type="text"
-                //   value={editedUser.name}
-                  ref={this.nameRef}
-                 defaultValue={editedUser.name}
-                  className="form-control mb-2"
-                />
-                <input
-                  type="text"
-                //   value={editedUser.company.name}
-                ref={this.companyRef}
-                defaultValue={editedUser.company.name}                  className="form-control mb-2"
-                />
-                <input
-                  type="text"
-                //   value={editedUser.phone}
-                ref={this.phoneRef}
-                defaultValue={editedUser.phone} 
-                  className="form-control mb-2"
-                />
-                <button onClick={this.handleClickSave} className="btn btn-success btn-sm me-2">
-                  Save
-                </button>
-              </div>
-            ) : (
-              <div className="d-flex align-items-center">
-                <p className="mb-0" style={{ flexGrow: 1 }}>
-                  {User.name}
-                </p>
-                <p className="mb-0" style={{ flexGrow: 1 }}>
-                  {User.company.name}
-                </p>
-                <p className="mb-0" style={{ flexGrow: 1 }}>
-                  {User.phone}
-                </p>
-                <button onClick={() => setIsEdit(true)} className="btn btn-warning btn-sm me-2">
-                  Edit
-                </button>
-                <button onClick={deleteUser} className="btn btn-danger btn-sm">
-                  Delete
-                </button>
-              </div>
-            )}
+       render() {
+        return (
+            <div
+            className='card mb-3'
+            style={{ boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
+          >
+            <div className="card-body">
+              {this.state.isEdit ? (
+                <div>
+                  <input className="form-control" name="" />
+                  <button
+                    onClick={handleClickSave}
+                    className="btn btn-success btn-sm me-2"
+                  >
+                    Save
+                  </button>
+                </div>
+              ) : (
+                <div className="d-flex align-items-center">
+                  <p
+                    className={`mb-0 ${
+                      isCompleted ? "text-decoration-line-through text-muted" : ""
+                    }`}
+                    style={{ flexGrow: 1 }}
+                  >
+                    {title}
+                  </p>
+                  <small className="text-muted me-5">
+     Updated on: {new Date(updatedAt).toLocaleString()}
+                  </small>
+                  <input
+                    checked={isCompleted}
+                    onChange={() =>
+                      editTask(index, {
+                        title,
+                        isCompleted: !isCompleted,
+                        updatedAt: new Date().toISOString(),
+                      })
+                    }
+                    type="checkbox"
+                    className="form-check-input me-2"
+                  />
+                  <button
+                    onClick={() => setIsEdit(true)}
+                    className="btn btn-warning btn-sm me-2"
+                  >
+                    Edit
+                  </button>
+                  <button onClick={deleteTask} className="btn btn-danger btn-sm">
+                    Del
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
 }}
 
 export default User;

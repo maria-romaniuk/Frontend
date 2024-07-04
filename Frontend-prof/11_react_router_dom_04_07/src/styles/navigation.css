@@ -1,0 +1,12 @@
+.header{
+    background-color: #5557b6;
+}
+.nav .nav-link{
+    color: aliceblue;
+}
+.nav .nav-link:hover{
+    color: aquamarine;
+}
+.nav .nav-link.active{
+    color: rgb(82, 232, 182); 
+}
