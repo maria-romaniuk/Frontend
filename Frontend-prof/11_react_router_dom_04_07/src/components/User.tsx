@@ -1,6 +1,7 @@
 import { ChangeEvent, Component } from "react";
 import { IUser } from "./UserList";
 import style from '../styles/user.module.css';
+import { useNavigate } from "react-router-dom";
 
 interface IProps{
   user: IUser;
