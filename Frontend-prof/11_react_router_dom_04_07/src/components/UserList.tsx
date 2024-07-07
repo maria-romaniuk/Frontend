@@ -2,6 +2,7 @@ import axios from "axios";
 import { ChangeEvent, Component, ReactNode } from "react";
 import User from "./User";
 
+
 export interface IUser {
   id: number;
   name: string;
@@ -12,6 +13,7 @@ export interface IUser {
 interface IState {
   users: IUser[];
   newUser: Omit<IUser, "id">;
+  
   // newName: string,
   // newCompany: string,
   // newPhone: string

@@ -1,11 +1,12 @@
 import { ChangeEvent, Component } from "react";
 import { IUser } from "./UserList";
-import '../styles/user.css'
+import style from '../styles/user.module.css';
 
-interface IProps {
+interface IProps{
   user: IUser;
   deleteUser: () => void;
   editUser: (user: IUser) => void;
+  navigateToDetail: () => void;
 }
 
 interface IState {
@@ -15,7 +16,7 @@ interface IState {
   phone: string;
 }
 
-export default class User extends Component<IProps, IState> {
+ class User extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -23,8 +24,10 @@ export default class User extends Component<IProps, IState> {
       name: props.user.name,
       company: props.user.company.name,
       phone: props.user.phone,
+      
     };
   }
+
 
   toggleEdit = () => {
     this.setState((prevState) => ({ ...prevState, isEdit: !prevState.isEdit }))
@@ -54,11 +57,16 @@ export default class User extends Component<IProps, IState> {
     editUser(updatedUser);
     this.toggleEdit();
   }
+  navigateToDetail = () => {
+    const history = useHistory();
+    const { user } = this.props;
+    history.push(`/user/${user.id}`); // Переход на страницу с деталями пользователя
+  };
 
   render() {
     return (
       <div
-        className='card user-card mb-3'
+        className={`card ${style.user_card} mb-3`}
         style={{ boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
       >
         <div className="card-body">
@@ -89,6 +97,9 @@ export default class User extends Component<IProps, IState> {
                 <button onClick={this.props.deleteUser} className="btn btn-danger btn-sm">
                   Del
                 </button>
+                <button onClick={this.navigateToDetail} className="btn btn-success btn-sm">
+                  Info
+                </button>
               </div>
             </div>
           )}
@@ -97,3 +108,4 @@ export default class User extends Component<IProps, IState> {
     );
   }
 }
+export default User;

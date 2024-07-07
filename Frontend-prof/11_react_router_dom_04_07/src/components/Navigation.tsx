@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import '../styles/navigation.css'
+import  '../styles/navigation.module.css'
+// import style from  '../styles/navigation.module.css'
 
 const Navigation = () => {
   //ui routing пользовательский интерфейс марщтуризации. как пользователь взаимоействует с нашей логикой
