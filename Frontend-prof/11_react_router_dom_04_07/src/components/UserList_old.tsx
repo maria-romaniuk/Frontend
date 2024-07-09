@@ -10,21 +10,10 @@ export interface IUser {
   phone: string;
 }
 
-export interface IUserDetails extends IUser {
-  username: string;
-  email: string;
-  address: {
-    street: string,
-    suite: string,
-    city: string,
-    zipcode: string,
-  };
-  website: string;
-}
 interface IState {
   users: IUser[];
   newUser: Omit<IUser, "id">;
-
+  
   // newName: string,
   // newCompany: string,
   // newPhone: string
@@ -102,13 +91,13 @@ class UserList extends Component<Record<string, never>, IState> {
   handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     // TODO
     const { value, name } = e.target;
-
+    
     if (name === 'company') {
-      this.setState({ ...this.state, newUser: { ...this.state.newUser, company: { name: value } } })
+      this.setState({ ...this.state, newUser: { ...this.state.newUser, company: { name: value } }})
       return;
     }
 
-    this.setState({ ...this.state, newUser: { ...this.state.newUser, [name === 'name' ? 'name' : 'phone']: value } })
+    this.setState({ ...this.state, newUser: { ...this.state.newUser, [name === 'name' ? 'name' : 'phone']: value }})
   }
 
   render(): ReactNode {
@@ -151,7 +140,6 @@ class UserList extends Component<Record<string, never>, IState> {
               user={user}
               deleteUser={() => this.deleteUser(user.id)}
               editUser={this.editUser}
-              changeIsDetails ={(UserDetails: IUserDetails) => this. setState((prevState) => ({...prevState, isDetails: !prevState.isDetails})}
             />
           ))}
         </div>
@@ -161,5 +149,3 @@ class UserList extends Component<Record<string, never>, IState> {
 }
 
 export default UserList;
-
-//spred - ... 

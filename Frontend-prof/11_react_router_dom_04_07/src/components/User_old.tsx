@@ -7,7 +7,7 @@ interface IProps{
   user: IUser;
   deleteUser: () => void;
   editUser: (user: IUser) => void;
-  isDetails: boolean
+  navigateToDetail: () => void;
 }
 
 interface IState {
@@ -58,7 +58,11 @@ interface IState {
     editUser(updatedUser);
     this.toggleEdit();
   }
- 
+  navigateToDetail = () => {
+    const history = useHistory();
+    const { user } = this.props;
+    history.push(`/user/${user.id}`); // Переход на страницу с деталями пользователя
+  };
 
   render() {
     return (
