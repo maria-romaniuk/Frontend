@@ -1,26 +1,27 @@
 import { ActionCounter } from './counterAction';
 
+// 2. а) Типизация State
 export interface InitialState {
     value: number;
 }
 
+// b) Инициализация State 
 const initialState: InitialState = {
     value: 0
 }
 
+// c) Описание работы Reducer (как State должен меняться в зависимости от Action)
 export default function counterReducer(state = initialState, action: ActionCounter) {
     switch (action.type) {
-        case 'counter/minus':
-            return { ...state, value: state.value - 1 }
-        case 'counter/plus':
-            return { ...state, value: state.value + 1 }
-        case 'counter/minus10':
-            return { ...state, value: state.value - 10 }
-        case 'counter/plus10':
-            return { ...state, value: state.value + 10 }
-            case 'counter/customMinus':
-            return { ...state, value: state.value - action.payload }
-        case 'counter/customPlus':
+        // case 'counter/minus':
+        //     return { ...state, value: state.value - 1 }
+        // case 'counter/plus':
+        //     return { ...state, value: state.value + 1 }
+        // case 'counter/minus10':
+        //     return { ...state, value: state.value - 10 }
+        // case 'counter/plus10':
+        //     return { ...state, value: state.value + 10 }
+        case 'counter/changeX':
             return { ...state, value: state.value + action.payload }
         default:
             return state
