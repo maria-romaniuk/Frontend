@@ -1,10 +1,11 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "./storeRTK";
 
 
 export interface InitialStateS {
     value: string;
     quote: IQuote | null;
-    status: 'loading '| 'succeeded' | 'failed' | null;
+    status: 'loading'| 'succeeded' | 'failed' | null;
 }
 
 interface IQuote{
@@ -24,7 +25,7 @@ const initialState: InitialStateS = {
     status: null,
 }
 
-export const fetchQuote = createAsyncThunk<IQuote>('fetchQuote', async () => {
+export const fetchQuote = createAsyncThunk<IQuote, void, { state: RootState }>('sandwich/fetchQuote', async () => {
     const response = fetch('https://api.gameofthronesquotes.xyz/v1/random')
         const data = (await response).json();
     return data;
@@ -46,7 +47,7 @@ const sandwichSlice = createSlice({
         builder
             .addCase(fetchQuote.pending, (state) => {
                 //Loading
-                state.status = 'loading '
+                state.status = 'loading'
             })
             .addCase(fetchQuote.fulfilled, (state, action) => {
                 //когда успешная загрузка произошла

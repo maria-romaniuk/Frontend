@@ -5,16 +5,16 @@ import { addIngredient, clearAll, deleteLast, fetchQuote } from '../reduxRTK/san
 import { useEffect } from 'react';
 
 export const Sandwich = () => {
-  const {value, quote, status} = useSelector((state: RootState) => state.sandwich);
+  const { value, quote, status } = useSelector((state: RootState) => state.sandwich);
   const dispatch = useDispatch();
 
 
-  useEffect(() =>{
-     dispatch(fetchQuote())
+  useEffect(() => {
+    dispatch(fetchQuote())
   }, [])
   return (
     <div className='container d-flex flex-column align-items-center p-5'>
-      { status === 'loading ' && (
+      {/* { status === 'loading ' && (
         <div className="spinner-border" role="status">
         <span className="sr-only"></span>
       </div>
@@ -24,6 +24,16 @@ export const Sandwich = () => {
       )}
       {status === 'failed' && (
         <div>fetch failed</div>
+      )} */}
+
+      {/* // через тернарный оператор отображение статуса */}
+
+      {status === 'loading' ? (
+        <div className="spinner-border" role="status">
+          <span className="sr-only"></span>
+        </div>
+      ) : (
+        status === 'succeeded' ? <div>{quote?.sentence}</div> : <div>fetch failed</div>
       )}
 
       <h2>Choose your ingredients:</h2>
